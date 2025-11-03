@@ -21,6 +21,9 @@ brew install node
 ### Now do this to run the frontend server
 
 ```bash
+cd frontend
+```
+```bash
 npm install
 ```
 ```bash
