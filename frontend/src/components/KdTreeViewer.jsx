@@ -466,7 +466,7 @@ const KdTreeViewer = () => {
         <div className="flex flex-col md:flex-row gap-6">
 
           {/* Left Panel: Canvas and Controls */}
-          <div className="w-full">
+          <div className="w-[55%]">
             <div className="flex flex-wrap gap-2 items-center mb-4">
 
               <button
