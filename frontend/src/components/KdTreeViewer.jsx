@@ -450,10 +450,10 @@ const KdTreeViewer = () => {
       <div className="bg-white shadow-2xl border-t-4 border-emerald-600 flex flex-col justify-center rounded-xl p-6 md:p-8 h-auto w-[88vw]">
 
         {/* Header */}
-        <h1 className="text-3xl font-extrabold text-gray-800 mb-2 flex items-center">
-          <Network className="mr-3 w-7 h-7 text-emerald-600" />
-          KD-Tree Interactive Viewer
-        </h1>
+        <h2 className="text-2xl  font-bold text-gray-800 mb-4 flex items-center">
+          <Network className="w-6 h-6 mr-3 text-emerald-600" />
+          KD-Tree Visualization & Interaction
+        </h2>
         <p className="text-gray-500 mb-6 border-b pb-4">
           <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
 
@@ -537,7 +537,7 @@ const KdTreeViewer = () => {
 
             {/* Status/Results */}
             <div className="mt-4 p-4 bg-white rounded-lg border border-gray-200 shadow-inner">
-              
+
               {apiError && (
                 <div className="mb-3 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
                   <strong>API Error:</strong> {apiError}
@@ -588,9 +588,14 @@ const KdTreeViewer = () => {
                 {activeTab === 'legend' && (
                   <>
                     <h3 className="font-bold text-base text-gray-800">Space Partitioning</h3>
-                    <p>
-                      The visualization now shows the **splitting hyperplanes** used by the tree:
-                    </p>
+
+                    <ReactMarkdown
+                      remarkPlugins={[remarkMath]}
+                      rehypePlugins={[rehypeKatex]}
+                    >
+                      {`The visualization now shows the **splitting hyperplanes** used by the tree:`}
+                    </ReactMarkdown>
+
                     <ul className="list-disc list-inside space-y-1 ml-2">
                       <li><span className="font-semibold text-red-600">Red Dashed Lines</span>: X-dimension splits (Vertical).</li>
                       <li><span className="font-semibold text-blue-600">Blue Dashed Lines</span>: Y-dimension splits (Horizontal).</li>
@@ -605,108 +610,109 @@ const KdTreeViewer = () => {
                     <p>
                       KD-Tree deletion is a slightly more complex operation to maintain the tree structure correctly:
                     </p>
-                    <ol className="list-decimal list-inside space-y-1">
+                    <ol className="list-decimal space-y-1">
                       <li>The target node is located.</li>
-                      <li>If the node is not a leaf, it is replaced by the node with the minimum value in the splitting dimension from its **right subtree**.</li>
+                      <li><ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{`If the node is not a leaf, it is replaced by the node with the minimum value in the splitting dimension from its **right subtree**.`}</ReactMarkdown></li>
                       <li>The replacement process is recursive. If a right subtree doesn't exist, the replacement is found in the left subtree, and a complex re-linking operation occurs to preserve the tree properties.</li>
                     </ol>
                     <p className="mt-3 bg-red-100 p-2 rounded-md border border-red-200">
-                      In **Delete Mode**, click near a point (within ~10 pixels) to find and remove the corresponding data entry from the tree via the API.
+                      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                        {`In **Delete Mode**, click near a point (within ~10 pixels) to find and remove the corresponding data entry from the tree via the API.`}</ReactMarkdown>
                     </p>
                   </>
                 )}
               </div>
             </div>
             {/* Binary Tree Representation */}
-              {treeStructure && (
-                <div className="w-1/2 mt-3">
-                  <h2 className="text-xl font-bold text-gray-800 mb-2">
-                    Binary Tree Representation
-                  </h2>
-                  <p className="text-gray-500 text-sm mb-4">
-                    This diagram shows the binary (hierarchical) representation of the same KD-tree.
-                  </p>
-                  <div
-                    className="border rounded-lg shadow-md bg-white overflow-x-auto p-4"
-                    style={{ height: "400px", overflowY: "auto" }}
+            {treeStructure && (
+              <div className="w-1/2 mt-3">
+                <h2 className="text-xl font-bold text-gray-800 mb-2">
+                  Binary Tree Representation
+                </h2>
+                <p className="text-gray-500 text-sm mb-4">
+                  This diagram shows the binary (hierarchical) representation of the same KD-tree.
+                </p>
+                <div
+                  className="border rounded-lg shadow-md bg-white overflow-x-auto p-4"
+                  style={{ height: "400px", overflowY: "auto" }}
+                >
+                  <svg
+                    width="1000"
+                    height="1000"
+                    viewBox="0 0 1000 1000"
+                    className="mx-auto"
                   >
-                    <svg
-                      width="1000"
-                      height="1000"
-                      viewBox="0 0 1000 1000"
-                      className="mx-auto"
-                    >
-                      {(() => {
-                        const nodes = [];
-                        const links = [];
+                    {(() => {
+                      const nodes = [];
+                      const links = [];
 
-                        // Recursive traversal to compute node positions
-                        const traverse = (node, depth, x, xStep, yStep = 70) => {
-                          if (!node) return;
+                      // Recursive traversal to compute node positions
+                      const traverse = (node, depth, x, xStep, yStep = 70) => {
+                        if (!node) return;
 
-                          const y = (depth + 1) * yStep;
-                          nodes.push({ x, y, label: `(${node.point[0]}, ${node.point[1]})` });
+                        const y = (depth + 1) * yStep;
+                        nodes.push({ x, y, label: `(${node.point[0]}, ${node.point[1]})` });
 
-                          if (node.left) {
-                            const childX = x - xStep / 4;
-                            links.push({ x1: x, y1: y, x2: childX, y2: (depth + 2) * yStep });
-                            traverse(node.left, depth + 1, childX, xStep, yStep);
-                          }
+                        if (node.left) {
+                          const childX = x - xStep / 4;
+                          links.push({ x1: x, y1: y, x2: childX, y2: (depth + 2) * yStep });
+                          traverse(node.left, depth + 1, childX, xStep, yStep);
+                        }
 
-                          if (node.right) {
-                            const childX = x + xStep / 4;
-                            links.push({ x1: x, y1: y, x2: childX, y2: (depth + 2) * yStep });
-                            traverse(node.right, depth + 1, childX, xStep / 2, yStep);
-                          }
-                        };
+                        if (node.right) {
+                          const childX = x + xStep / 4;
+                          links.push({ x1: x, y1: y, x2: childX, y2: (depth + 2) * yStep });
+                          traverse(node.right, depth + 1, childX, xStep / 2, yStep);
+                        }
+                      };
 
-                        traverse(treeStructure, 0, 350, 400);
+                      traverse(treeStructure, 0, 350, 400);
 
-                        return (
-                          <>
-                            {/* Links */}
-                            {links.map((l, i) => (
-                              <line
-                                key={i}
-                                x1={l.x1}
-                                y1={l.y1}
-                                x2={l.x2}
-                                y2={l.y2}
-                                stroke="#9ca3af"
+                      return (
+                        <>
+                          {/* Links */}
+                          {links.map((l, i) => (
+                            <line
+                              key={i}
+                              x1={l.x1}
+                              y1={l.y1}
+                              x2={l.x2}
+                              y2={l.y2}
+                              stroke="#9ca3af"
+                              strokeWidth="2"
+                            />
+                          ))}
+                          {/* Nodes */}
+                          {nodes.map((n, i) => (
+                            <g key={i}>
+                              <circle
+                                cx={n.x}
+                                cy={n.y}
+                                r="18"
+                                fill="#3b82f6"
+                                stroke="white"
                                 strokeWidth="2"
                               />
-                            ))}
-                            {/* Nodes */}
-                            {nodes.map((n, i) => (
-                              <g key={i}>
-                                <circle
-                                  cx={n.x}
-                                  cy={n.y}
-                                  r="18"
-                                  fill="#3b82f6"
-                                  stroke="white"
-                                  strokeWidth="2"
-                                />
-                                <text
-                                  x={n.x}
-                                  y={n.y + 4}
-                                  textAnchor="middle"
-                                  fontSize="12"
-                                  fontWeight="600"
-                                  fill="white"
-                                  fontFamily="Inter, sans-serif"
-                                >
-                                  {n.label}
-                                </text>
-                              </g>
-                            ))}
-                          </>
-                        );
-                      })()}
-                    </svg>
-                  </div>
+                              <text
+                                x={n.x}
+                                y={n.y + 4}
+                                textAnchor="middle"
+                                fontSize="12"
+                                fontWeight="600"
+                                fill="white"
+                                fontFamily="Inter, sans-serif"
+                              >
+                                {n.label}
+                              </text>
+                            </g>
+                          ))}
+                        </>
+                      );
+                    })()}
+                  </svg>
                 </div>
-              )}
+              </div>
+            )}
           </div>
         </div>
       </div>

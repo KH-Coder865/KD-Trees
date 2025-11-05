@@ -8,7 +8,7 @@ export default function Application() {
             <section className="bg-white p-8 mt-3 rounded-xl w-full shadow-lg border-t-4 border-orange-500">
                 <h2 className="text-2xl border-b border-gray-300 py-2 font-bold text-gray-800 mb-4 flex items-center">
                     <Puzzle className="w-6 h-6 mr-3 text-orange-500" />
-                    Project Deep Dive & Theory
+                    Applications of KD Trees
                 </h2>
 
                 <div className="space-y-4 pt-4">

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Description from './components/Description';
 import { Element } from 'react-scroll';
 import Codes from './components/Codes';
@@ -24,6 +24,7 @@ export default function App() {
                     <Application />
                 </Element>
             </div>
+            <Footer />
         </>
     );
 }

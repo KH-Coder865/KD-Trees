@@ -433,11 +433,11 @@ const Codes = () => {
     return (
         <div className="bg-white rounded-2xl border-t-6 border-black w-[88vw] text-gray-100 p-4 sm:p-8 font-sans">
             <div className="w-full">
-                <h3 className="text-3xl font-extrabold flex gap-2 text-black mb-2 tracking-tight">
-                    <Code className="w-8 h-8 text-blue-500" />
-                    KD-Tree Multi-Language Code
-                </h3>
-                <p className="text-gray-600 py-3 border-b-2 border-gray-500 mb-8 text-md">
+                <h2 className="text-2xl  font-bold text-gray-800 mb-4 flex items-center">
+                    <Code className="w-6 h-6 mr-3 text-black" />
+                    Applications of KD Trees
+                </h2>
+                <p className="text-gray-600 border-b border-gray-300 py-2 mb-8 text-md">
                     View implementations of the KD-Tree (Insertion and Nearest Neighbor Search) across different languages.
                 </p>
 
