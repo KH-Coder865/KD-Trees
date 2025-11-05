@@ -10,7 +10,7 @@ export default function Navbar() {
       <div className="p-2 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-extrabold text-gray-200 tracking-tight flex items-center">
           <Network className="w-8 h-8 mr-3 text-blue-400" />
-          Interactive KD-Tree Project
+          K - Dimensional Trees
         </h1>
           <p className="text-gray-400 mt-1">A deep dive into spatial partitioning, construction, and search efficiency.</p>
         </div>
