@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Description from './components/Description';
 import { Element } from 'react-scroll';
-import Code from './components/Code';
+import Codes from './components/Codes';
 import Application from './components/Application';
 import KdTreeViewer from './components/KdTreeViewer';
 
@@ -18,7 +18,7 @@ export default function App() {
                     <KdTreeViewer />
                 </Element>
                 <Element name="code">
-                    <Code />
+                    <Codes />
                 </Element>
                 <Element name="app">
                     <Application />

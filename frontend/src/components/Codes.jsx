@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
+import { Code } from 'lucide-react';
 
 // --- 1. Code Snippets Data (KD-Tree Implementations) ---
 const codeSnippets = {
@@ -374,7 +375,7 @@ const tabs = {
 };
 
 // --- 2. Main App Component (code.jsx) ---
-const Code = () => {
+const Codes = () => {
     // State for managing the active language tab
     const [activeTab, setActiveTab] = useState('c');
     // State for managing the copy button feedback (0: default, 1: copied, 2: failed)
@@ -432,10 +433,11 @@ const Code = () => {
     return (
         <div className="bg-white rounded-2xl border-t-6 border-black w-[88vw] text-gray-100 p-4 sm:p-8 font-sans">
             <div className="w-full">
-                <h3 className="text-3xl font-extrabold text-black mb-2 tracking-tight">
+                <h3 className="text-3xl font-extrabold flex gap-2 text-black mb-2 tracking-tight">
+                    <Code className="w-8 h-8 text-blue-500" />
                     KD-Tree Multi-Language Code
                 </h3>
-                <p className="text-gray-400 py-3 border-b-2 border-gray-500 mb-8 text-lg">
+                <p className="text-gray-600 py-3 border-b-2 border-gray-500 mb-8 text-md">
                     View implementations of the KD-Tree (Insertion and Nearest Neighbor Search) across different languages.
                 </p>
 
@@ -449,7 +451,7 @@ const Code = () => {
                                 py-2 px-3 cursor-pointer sm:px-4 text-sm sm:text-base font-semibold transition-all duration-200 ease-in-out rounded-t-lg
                                 ${activeTab === key 
                                     ? 'text-blue-400 border-b-4 border-blue-500 bg-gray-800' 
-                                    : 'text-gray-400 border-b-4 border-transparent hover:text-blue-300 hover:border-gray-600'
+                                    : 'text-gray-600 border-b-4 border-transparent hover:text-blue-300 hover:border-gray-600'
                                 }
                             `}
                         >
@@ -487,4 +489,4 @@ const Code = () => {
     );
 };
 
-export default Code;
+export default Codes;
