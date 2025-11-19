@@ -1,3 +1,2 @@
-Python
 Flask
 flask-cors
