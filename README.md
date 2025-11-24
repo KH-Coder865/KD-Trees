@@ -1,7 +1,3 @@
-# Please do the following while committing to git:
-
-- Add your files in a folder other than the already present folders.
-
 # To run this on your local machine:
 
 ### First Clone the Repository:
