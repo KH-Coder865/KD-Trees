@@ -4,7 +4,11 @@ import math
 
 app = Flask(__name__)
 # Enable CORS for all routes, allowing the React frontend (running on a different port/origin) to connect
-CORS(app, origins=["https://kh-coder865.github.io/KD-Trees/"])
+CORS(
+    app,
+    origins=["https://kh-coder865.github.io"],
+    supports_credentials=True
+)
 
 # -----------------------------
 # KD-Tree Node Definition
