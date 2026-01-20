@@ -4,7 +4,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 
-const API_BASE_URL = 'https://kd-trees-backend.onrender.com';
+const API_BASE_URL = import.meta.env.VITE_API;
 const CANVAS_SIZE = 700;
 const BOUNDARY_MAX = 100;
 const BOUNDARY_MIN = 0;
