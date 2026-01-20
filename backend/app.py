@@ -4,7 +4,7 @@ import math
 
 app = Flask(__name__)
 # Enable CORS for all routes, allowing the React frontend (running on a different port/origin) to connect
-CORS(app)
+CORS(app, origins=["https://kh-coder865.github.io/KD-Trees/"])
 
 # -----------------------------
 # KD-Tree Node Definition
@@ -274,4 +274,4 @@ def delete_all_points():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False)
+    app.run(debug=False)
